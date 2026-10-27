@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src https://jkephxfnqlioahqdvwcu.supabase.co; form-action 'none'; base-uri 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex">
+  <title>STARRZ Sign-in</title>
+  <link rel="stylesheet" href="consent.css">
+</head>
+<body>
+  <main>
+    <h1>STARRZ Memory</h1>
+    <p class="lede">Sign in to let an app use your STARRZ memory server.</p>
+
+    <section id="no-request" hidden>
+      <p>There's no sign-in request here. This page opens on its own when an app such as ChatGPT asks to connect to STARRZ Memory.</p>
+    </section>
+
+    <section id="step-email" hidden>
+      <label for="email">Email</label>
+      <input id="email" type="email" autocomplete="email" required>
+      <button id="send">Send code</button>
+    </section>
+
+    <section id="step-code" hidden>
+      <p>Enter the code sent to your email.</p>
+      <label for="code">Code</label>
+      <input id="code" inputmode="numeric" autocomplete="one-time-code" maxlength="10" required>
+      <button id="verify">Verify</button>
+    </section>
+
+    <section id="step-consent" hidden>
+      <p><strong id="client-name"></strong> wants to use STARRZ Memory.</p>
+      <dl>
+        <dt>Sends you back to</dt><dd id="redirect-host"></dd>
+        <dt>Permissions</dt><dd id="scopes"></dd>
+      </dl>
+      <p id="redirect-warning" class="warning" hidden>This app isn't returning to chatgpt.com. Only approve it if you started this connection yourself.</p>
+      <div class="actions">
+        <button id="approve">Approve</button>
+        <button id="deny" class="secondary">Deny</button>
+      </div>
+    </section>
+
+    <p id="status" role="status"></p>
+  </main>
+  <script src="consent.js"></script>
+</body>
+</html>
